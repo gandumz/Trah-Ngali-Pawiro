@@ -199,7 +199,8 @@
       "note": "",
       "children": [
         "n39",
-        "n44"
+        "n44",
+        "n47"
       ],
       "spouseId": "n38",
       "parentId": "n3"
@@ -574,7 +575,19 @@
       "children": [],
       "spouseId": "n39",
       "parentId": "n14"
+    },
+    "n47": {
+      "id": "n47",
+      "name": "Alya Isnaeny Putri",
+      "title": "Rr.",
+      "gender": "P",
+      "gencode": "G.1.2.4.2",
+      "place": "",
+      "note": "",
+      "children": [],
+      "spouseId": null,
+      "parentId": "n14"
     }
   },
-  "idCounter": 47
+  "idCounter": 48
 }
