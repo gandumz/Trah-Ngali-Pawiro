@@ -516,30 +516,6 @@
       "spouseId": "n46",
       "parentId": "n14"
     },
-    "n42": {
-      "id": "n42",
-      "name": "zihva revalya restiana",
-      "title": "Rr.",
-      "gender": "P",
-      "gencode": "",
-      "place": "",
-      "note": "",
-      "children": [],
-      "spouseId": null,
-      "parentId": "n38"
-    },
-    "n43": {
-      "id": "n43",
-      "name": "zihva revalya restiana",
-      "title": "Rr.",
-      "gender": "P",
-      "gencode": "G.1.2.4.3",
-      "place": "",
-      "note": "",
-      "children": [],
-      "spouseId": null,
-      "parentId": "n38"
-    },
     "n45": {
       "id": "n45",
       "name": "Wildan Revano Gasendra",
