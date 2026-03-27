@@ -197,7 +197,9 @@
       "gencode": "G.1.2.4",
       "place": "",
       "note": "",
-      "children": [],
+      "children": [
+        "n39"
+      ],
       "spouseId": "n38",
       "parentId": "n3"
     },
@@ -494,7 +496,19 @@
       "children": [],
       "spouseId": "n14",
       "parentId": "n3"
+    },
+    "n39": {
+      "id": "n39",
+      "name": "Restu Reva Prawidya",
+      "title": "R.",
+      "gender": "L",
+      "gencode": "G.1.2.4.1",
+      "place": "",
+      "note": "",
+      "children": [],
+      "spouseId": null,
+      "parentId": "n14"
     }
   },
-  "idCounter": 39
+  "idCounter": 40
 }
