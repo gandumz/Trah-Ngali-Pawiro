@@ -198,7 +198,8 @@
       "place": "",
       "note": "",
       "children": [
-        "n39"
+        "n39",
+        "n44"
       ],
       "spouseId": "n38",
       "parentId": "n3"
@@ -547,7 +548,19 @@
       "children": [],
       "spouseId": null,
       "parentId": "n38"
+    },
+    "n44": {
+      "id": "n44",
+      "name": "zihva revalya restiana",
+      "title": "Rr.",
+      "gender": "P",
+      "gencode": "G.1.2.4.3",
+      "place": "",
+      "note": "",
+      "children": [],
+      "spouseId": null,
+      "parentId": "n14"
     }
   },
-  "idCounter": 44
+  "idCounter": 45
 }
