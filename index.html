@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silsilah Trah Raden Kasanmunadi</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:system-ui,-apple-system,sans-serif;background:#f0ede8;color:#1a1a18;min-height:100vh;}
+header{background:#fff;border-bottom:1px solid #ddd;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;position:sticky;top:0;z-index:50;}
+header h1{font-size:15px;font-weight:600;}
+header p{font-size:11px;color:#888;margin-top:1px;}
+.hbtns{display:flex;gap:6px;flex-wrap:wrap;}
+.hbtns button{font-size:12px;padding:5px 12px;border-radius:7px;border:1px solid #ccc;background:#fff;color:#333;cursor:pointer;}
+.hbtns button:hover{background:#f0ede8;}
+.hbtns button.green{background:#e8f5e9;color:#1b5e20;border-color:#4caf50;}
+.hbtns button.blue{background:#e6f1fb;color:#185fa5;border-color:#378add;}
+#status-bar{font-size:12px;padding:5px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #e5e2dd;background:#fafaf8;flex-wrap:wrap;}
+#sync-dot{width:8px;height:8px;border-radius:50%;background:#ccc;flex-shrink:0;}
+#sync-dot.ok{background:#4caf50;}
+#sync-dot.err{background:#e53935;}
+#sync-dot.spin{background:#fb8c00;animation:pulse .7s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+#setup-panel{background:#fffde7;border:1px solid #f9a825;border-radius:10px;margin:12px 16px;padding:14px;display:none;}
+#setup-panel h2{font-size:14px;font-weight:600;color:#e65100;margin-bottom:8px;}
+.setup-ol{font-size:13px;color:#555;margin:0 0 12px 18px;line-height:1.9;}
+.setup-ol b{color:#222;}
+#setup-panel input{width:100%;font-size:13px;padding:7px 10px;border-radius:7px;border:1px solid #ccc;margin-bottom:8px;outline:none;}
+#setup-panel input:focus{border-color:#378add;}
+.setup-btns{display:flex;gap:8px;}
+.setup-btns button{font-size:13px;padding:7px 14px;border-radius:7px;border:1px solid #ccc;background:#fff;cursor:pointer;}
+.setup-btns button.ok{background:#e6f1fb;color:#185fa5;border-color:#378add;}
+#legend{display:flex;gap:10px;font-size:11px;color:#666;padding:5px 16px;background:#f9f7f4;border-bottom:1px solid #e5e2dd;flex-wrap:wrap;align-items:center;}
+#legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:2px;}
+.toolbar{display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding:8px 16px;background:#f9f7f4;border-bottom:1px solid #e5e2dd;}
+.toolbar button{font-size:12px;padding:5px 10px;border-radius:7px;border:1px solid #ccc;background:#fff;color:#333;cursor:pointer;}
+.toolbar button:hover{background:#f0ede8;}
+.toolbar button.primary{background:#e6f1fb;color:#185fa5;border-color:#378add;}
+.toolbar select{font-size:12px;padding:5px 8px;border-radius:7px;border:1px solid #ccc;background:#fff;color:#333;}
+#tree-container{overflow:auto;margin:12px 16px;border:1px solid #ddd;border-radius:10px;background:#fff;min-height:360px;position:relative;}
+#load-overlay{position:absolute;inset:0;background:rgba(255,255,255,.88);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border-radius:10px;z-index:5;}
+#load-overlay.hidden{display:none;}
+.spinner{width:28px;height:28px;border:3px solid #e0e0e0;border-top-color:#378add;border-radius:50%;animation:spin .7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+svg#tree{display:block;}
+.ng{cursor:pointer;}
+.ng rect{transition:opacity .15s;}
+.ng:hover rect{opacity:.82;}
+.ab{cursor:pointer;}
+.ab circle{transition:opacity .15s;}
+.ab:hover circle{opacity:1!important;}
+#infobar{font-size:11px;color:#999;padding:5px 16px 12px;text-align:center;}
+#modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:200;align-items:center;justify-content:center;}
+#modal-overlay.open{display:flex;}
+#modal{background:#fff;border-radius:12px;border:1px solid #ddd;padding:18px;width:320px;max-width:95vw;max-height:90vh;overflow-y:auto;box-shadow:0 8px 28px rgba(0,0,0,.18);}
+#modal h3{font-size:15px;font-weight:600;margin-bottom:12px;}
+#modal label{font-size:12px;color:#666;display:block;margin-bottom:3px;}
+#modal input,#modal select,#modal textarea{width:100%;font-size:13px;padding:7px 10px;border-radius:7px;border:1px solid #ccc;background:#fff;color:#1a1a18;margin-bottom:9px;font-family:inherit;outline:none;}
+#modal input:focus,#modal select:focus,#modal textarea:focus{border-color:#378add;}
+#modal textarea{resize:vertical;min-height:52px;}
+.mact{display:flex;gap:8px;justify-content:flex-end;margin-top:4px;flex-wrap:wrap;}
+.mact button{font-size:13px;padding:6px 14px;border-radius:7px;border:1px solid #ccc;background:#fff;cursor:pointer;}
+.mact button.ok{background:#e6f1fb;color:#185fa5;border-color:#378add;}
+.mact button.del{background:#fcebeb;color:#a32d2d;border-color:#e24b4a;}
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(40px);background:#222;color:#fff;font-size:13px;padding:8px 18px;border-radius:8px;opacity:0;transition:all .3s;z-index:300;pointer-events:none;white-space:nowrap;}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+#toast.ok{background:#2e7d32;}
+#toast.err{background:#c62828;}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>🌳 Silsilah Trah Raden Kasanmunadi</h1>
+    <p>dari Ngayojokarto Hadiningrat</p>
+  </div>
+  <div class="hbtns">
+    <button class="green" onclick="loadFromGitHub()">🔄 Refresh</button>
+    <button class="blue" onclick="saveToGitHub()">💾 Simpan</button>
+    <button onclick="showSetup()">⚙️ Pengaturan</button>
+    <button onclick="exportHTML()">📥 Export HTML</button>
+  </div>
+</header>
+
+<div id="status-bar">
+  <div id="sync-dot"></div>
+  <span id="sync-text" style="color:#666">Belum terhubung ke GitHub</span>
+  <span id="last-sync" style="color:#bbb;font-size:11px;margin-left:4px;"></span>
+  <span id="node-count" style="color:#bbb;font-size:11px;margin-left:auto;"></span>
+</div>
+
+<div id="setup-panel">
+  <h2>⚙️ Pengaturan GitHub</h2>
+  <ol class="setup-ol">
+    <li>Buka <a href="https://github.com/settings/tokens/new" target="_blank" style="color:#185fa5"><b>github.com/settings/tokens/new</b></a></li>
+    <li>Isi <b>Note</b>: <code>silsilah</code></li>
+    <li>Di <b>Select scopes</b>, centang <b>repo</b> (paling atas)</li>
+    <li>Klik <b>Generate token</b> → copy token yang muncul</li>
+    <li>Isi form di bawah ini</li>
+  </ol>
+  <label style="font-size:13px;font-weight:500;color:#333;display:block;margin-bottom:3px;">GitHub Token (ghp_...)</label>
+  <input id="s-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" type="password"/>
+  <label style="font-size:13px;font-weight:500;color:#333;display:block;margin-bottom:3px;">Username GitHub</label>
+  <input id="s-user" placeholder="contoh: gandumz"/>
+  <label style="font-size:13px;font-weight:500;color:#333;display:block;margin-bottom:3px;">Nama Repository</label>
+  <input id="s-repo" placeholder="contoh: silsilah-kasanmunadi"/>
+  <div class="setup-btns">
+    <button onclick="hideSetup()">Batal</button>
+    <button class="ok" onclick="saveSetup()">✓ Simpan & Hubungkan</button>
+  </div>
+</div>
+
+<div id="legend">
+  <b style="color:#333">Keterangan:</b>
+  <span><i style="background:#C8E6FA;border:1px solid #378ADD"></i>Laki-laki (R.)</span>
+  <span><i style="background:#FADADD;border:1px solid #D4537E"></i>Perempuan (Rr.)</span>
+  <span><i style="background:#E8F5E9;border:1px solid #4CAF50"></i>Pasangan</span>
+  <span>- - - Pasangan &nbsp;|&nbsp; — Keturunan</span>
+</div>
+
+<div class="toolbar">
+  <button class="primary" onclick="openAddRoot()">+ Tambah Leluhur</button>
+  <button onclick="expandAll()">Buka Semua</button>
+  <button onclick="collapseAll()">Tutup Semua</button>
+  <label style="font-size:12px;color:#666">Zoom:
+    <select onchange="setZoom(this.value)">
+      <option value="0.4">40%</option>
+      <option value="0.5">50%</option>
+      <option value="0.65">65%</option>
+      <option value="0.85" selected>85%</option>
+      <option value="1">100%</option>
+      <option value="1.25">125%</option>
+      <option value="1.5">150%</option>
+    </select>
+  </label>
+</div>
+
+<div id="tree-container">
+  <div id="load-overlay" class="hidden">
+    <div class="spinner"></div>
+    <span style="font-size:12px;color:#666">Memuat data...</span>
+  </div>
+  <svg id="tree"></svg>
+</div>
+<div id="infobar">Klik node untuk edit/hapus &nbsp;·&nbsp; <b>+</b> hijau = tambah anak &nbsp;·&nbsp; <b>♥</b> ungu = tambah pasangan</div>
+
+<div id="modal-overlay">
+  <div id="modal">
+    <h3 id="modal-title">Tambah Anggota</h3>
+    <label>Nama</label>
+    <input id="m-name" placeholder="Nama lengkap"/>
+    <label>Gelar (R. / Rr. / R. Ngt.)</label>
+    <input id="m-title" placeholder="R. / Rr. / R. Ngt."/>
+    <label>Jenis Kelamin</label>
+    <select id="m-gender"><option value="L">Laki-laki</option><option value="P">Perempuan</option></select>
+    <label>Kode Generasi (G.1.2.1)</label>
+    <input id="m-gencode" placeholder="G.1.2..."/>
+    <label>Tempat / Keterangan</label>
+    <input id="m-place" placeholder="Yogyakarta, Makam di..."/>
+    <label>Catatan</label>
+    <textarea id="m-note" placeholder="opsional"></textarea>
+    <div class="mact">
+      <button onclick="closeModal()">Batal</button>
+      <button class="del" id="btn-del" onclick="deleteNode()" style="display:none">🗑 Hapus</button>
+      <button class="ok" onclick="saveModal()">✓ Simpan</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+// ============ CONFIG ============
+const SK = 'trah_kas_v3';
+const GK = 'trah_kas_gh';
+
+// ============ STATE ============
+let nodes={}, idCounter=1, zoom=0.85;
+let modalMode=null, modalPid=null, modalNid=null;
+let collapsed=new Set();
+let ghConfig = JSON.parse(localStorage.getItem(GK)||'{}');
+// token, user, repo, sha (sha of data.json for updates)
+
+const NW=150, NH=56, HG=16, VG=64;
+
+// ============ TOAST ============
+function toast(msg,type=''){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.className='show '+(type||'');
+  clearTimeout(t._t); t._t=setTimeout(()=>{t.className='';},2800);
+}
+
+// ============ STATUS ============
+function setStatus(state,text,last){
+  document.getElementById('sync-dot').className=state;
+  document.getElementById('sync-text').textContent=text;
+  if(last) document.getElementById('last-sync').textContent='· '+last;
+}
+
+// ============ DATA ============
+function uid(){return 'n'+(idCounter++);}
+function mk(name,title,gender,gencode,place,note,pid){
+  const id=uid();
+  nodes[id]={id,name,title:title||'',gender:gender||'L',gencode:gencode||'',place:place||'',note:note||'',children:[],spouseId:null,parentId:pid||null};
+  return id;
+}
+function addChild(pid,name,title,gender,gencode,place,note){
+  const id=mk(name,title,gender,gencode,place,note,pid);
+  nodes[pid].children.push(id); return id;
+}
+function addSpouse(nid,name,title,gender,gencode,place,note){
+  const id=mk(name,title,gender,gencode,place,note,nodes[nid].parentId);
+  nodes[nid].spouseId=id; nodes[id].spouseId=nid; return id;
+}
+
+// ============ GITHUB API ============
+async function loadFromGitHub(){
+  if(!ghConfig.token){showSetup();return;}
+  setStatus('spin','Mengambil data dari GitHub...');
+  document.getElementById('load-overlay').classList.remove('hidden');
+  try{
+    const res = await fetch(
+      `https://api.github.com/repos/${ghConfig.user}/${ghConfig.repo}/contents/data.json`,
+      { headers:{ Authorization:'token '+ghConfig.token, Accept:'application/vnd.github.v3+json' } }
+    );
+    if(res.status===404){
+      // File belum ada — pakai data lokal
+      document.getElementById('load-overlay').classList.add('hidden');
+      setStatus('ok','Terhubung — file data.json belum ada');
+      toast('File data.json belum ada. Klik 💾 Simpan untuk membuat.','');
+      return;
+    }
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const json = await res.json();
+    const data = JSON.parse(atob(json.content.replace(/\n/g,'')));
+    nodes = data.nodes; idCounter = data.idCounter||1; collapsed=new Set();
+    ghConfig.sha = json.sha; // save sha for update
+    localStorage.setItem(GK, JSON.stringify(ghConfig));
+    saveLocal(); render();
+    setStatus('ok','Terhubung ke GitHub',new Date().toLocaleTimeString('id-ID'));
+    toast('Data berhasil dimuat dari GitHub','ok');
+  }catch(e){
+    setStatus('err','Gagal terhubung');
+    toast('Gagal: '+e.message,'err');
+  }
+  document.getElementById('load-overlay').classList.add('hidden');
+}
+
+async function saveToGitHub(){
+  if(!ghConfig.token){showSetup();return;}
+  setStatus('spin','Menyimpan ke GitHub...');
+  try{
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify({nodes,idCounter},null,2))));
+    const body = {
+      message: 'Update silsilah '+new Date().toLocaleString('id-ID'),
+      content,
+      ...(ghConfig.sha ? {sha: ghConfig.sha} : {})
+    };
+    const res = await fetch(
+      `https://api.github.com/repos/${ghConfig.user}/${ghConfig.repo}/contents/data.json`,
+      { method:'PUT', headers:{ Authorization:'token '+ghConfig.token, Accept:'application/vnd.github.v3+json', 'Content-Type':'application/json' }, body:JSON.stringify(body) }
+    );
+    if(!res.ok){
+      const err = await res.json();
+      throw new Error(err.message||'HTTP '+res.status);
+    }
+    const result = await res.json();
+    ghConfig.sha = result.content.sha;
+    localStorage.setItem(GK, JSON.stringify(ghConfig));
+    saveLocal();
+    setStatus('ok','Tersimpan di GitHub',new Date().toLocaleTimeString('id-ID'));
+    toast('Data tersimpan ke GitHub','ok');
+  }catch(e){
+    setStatus('err','Gagal menyimpan');
+    toast('Gagal: '+e.message,'err');
+  }
+}
+
+// ============ LOCAL ============
+function saveLocal(){
+  try{localStorage.setItem(SK,JSON.stringify({nodes,idCounter}));}catch(e){}
+}
+function loadLocal(){
+  try{
+    const d=JSON.parse(localStorage.getItem(SK)||'null');
+    if(d&&d.nodes){nodes=d.nodes;idCounter=d.idCounter||1;collapsed=new Set();return true;}
+  }catch(e){}
+  return false;
+}
+
+// ============ SETUP ============
+function showSetup(){
+  document.getElementById('s-token').value=ghConfig.token||'';
+  document.getElementById('s-user').value=ghConfig.user||'';
+  document.getElementById('s-repo').value=ghConfig.repo||'';
+  document.getElementById('setup-panel').style.display='block';
+  document.getElementById('s-token').focus();
+}
+function hideSetup(){document.getElementById('setup-panel').style.display='none';}
+function saveSetup(){
+  const token=document.getElementById('s-token').value.trim();
+  const user=document.getElementById('s-user').value.trim();
+  const repo=document.getElementById('s-repo').value.trim();
+  if(!token||!user||!repo){toast('Isi semua field','err');return;}
+  ghConfig={token,user,repo};
+  localStorage.setItem(GK,JSON.stringify(ghConfig));
+  hideSetup();
+  toast('Pengaturan disimpan, mencoba terhubung...','');
+  loadFromGitHub();
+}
+
+// ============ SEED DATA ============
+function seedData(){
+  nodes={}; idCounter=1; collapsed=new Set();
+  const g1=mk('Kasanmunadi','R.','L','G.1','Abdi Dalem Jajar Suronata, Yogyakarta · Makam Kuncen','',null);
+  const g13=addChild(g1,'Supingah al. Pawiroditoto','R. Ngt.','P','G.1.2','','');
+  addChild(g1,'Pingi al. Notodiguno','R.','L','G.1.1','','');
+  addChild(g1,'Jumaron al. Somodisastro','R.','L','G.1.3','','');
+  addChild(g1,'Tumirah al. Sumohartono','R. Ngt.','P','G.1.4','','');
+  addChild(g1,'Ngaidah al. Harjopranoto','R. Ngt.','P','G.1.5','','');
+  const g121=addChild(g13,'Ngali','R.','L','G.1.2.1','Makam di Secang Magelang','');
+  const g1211=addChild(g121,'Mohammad Jupri','R.','L','G.1.2.1.1','Riau','');
+  const g1212=addChild(g121,'Sri Daryati','Rr.','P','G.1.2.1.2','Secang','');
+  const g1213=addChild(g121,'Waladunajib','R.','L','G.1.2.1.3','Semarang','');
+  const g1214=addChild(g121,'Asfarudin','R.','L','G.1.2.1.4','Makam di Semarang','');
+  const g1215=addChild(g121,'Sri Bariah','Rr.','P','G.1.2.1.5','Gombong','');
+  const g1216=addChild(g121,'Puguh Sutopo','R.','L','G.1.2.1.6','Tempel (istri ke-2)','');
+  addSpouse(g1212,'Sukandar Budiharjo','','L','','','');
+  addSpouse(g1215,'Kusno','','L','','','');
+  addSpouse(g1216,'Tini Sutini','','P','','','');
+  addChild(g1212,'Alwi Prihatin','R.','L','G.1.2.1.2.1','','');
+  addChild(g1212,'Sri Suyatmiati','Rr.','P','G.1.2.1.2.2','','');
+  addChild(g1212,'Adi Sofyan','R.','L','G.1.2.1.2.3','','');
+  addChild(g1212,'Sri Subekti','Rr.','P','G.1.2.1.2.4','','');
+  addChild(g1212,'Joko Panulung','R.','L','G.1.2.1.2.5','','');
+  addChild(g1212,'Sri Wahyuti Pamungkas','Rr.','P','G.1.2.1.2.6','','');
+  addChild(g1213,'Agus','R.','L','G.1.2.1.3.1','','');
+  addChild(g1213,'(belum tercatat)','','L','G.1.2.1.3.2','','');
+  addChild(g1213,'Wawan','R.','L','G.1.2.1.3.3','','');
+  addChild(g1213,'(belum tercatat)','','L','G.1.2.1.3.4','','');
+  addChild(g1214,'Unggul Pujianto','R.','L','G.1.2.1.4.1','','');
+  addChild(g1214,'Dwi Romadhoni Raharjo','R.','L','G.1.2.1.4.2','','');
+  addChild(g1214,'Hepi Triono','R.','L','G.1.2.1.4.3','','');
+  addChild(g1214,'Catur Riani Fitri Astuti','Rr.','P','G.1.2.1.4.4','','');
+  addChild(g1215,'Budi Mulyono','R.','L','G.1.2.1.5.1','','');
+  addChild(g1215,'(belum tercatat)','','L','G.1.2.1.5.2','','');
+  addChild(g1215,'(belum tercatat)','','L','G.1.2.1.5.3','','');
+  addChild(g1215,'(belum tercatat)','','L','G.1.2.1.5.4','','');
+  const g12161=addChild(g1216,'Akhmad Fajar Riyadini','R.','L','G.1.2.1.6.1','','');
+  const g12162=addChild(g1216,'Yusuf Nurseto Aji','R.','L','G.1.2.1.6.2','','');
+  const g12163=addChild(g1216,'Aisyah Amani Tri Ostika Wati','Rr.','P','G.1.2.1.6.3','','');
+  addSpouse(g12161,'Dwi Ratmisari','','P','','','');
+  addSpouse(g12162,'Vera Dwi Anggraeni','','P','','','');
+  addSpouse(g12163,'Purwanto','','L','','','');
+  addChild(g12161,'Xavier Attarazka Akhmad','R.','L','G.1.2.1.6.1.1','','');
+  addChild(g12162,'Aksara Nawasena Yusuf','R.','L','G.1.2.1.6.2.1','','');
+  addChild(g12163,'Muhammad Haidar Alfarizi Purwanto','R.','L','G.1.2.1.6.3.1','','');
+}
+
+// ============ LAYOUT ============
+function sw(id){
+  if(!nodes[id]) return NW;
+  if(collapsed.has(id)) return NW+(nodes[id].spouseId&&nodes[nodes[id].spouseId]?HG/2+NW:0);
+  const n=nodes[id];
+  let own=NW+(n.spouseId&&nodes[n.spouseId]?HG/2+NW:0);
+  const kids=n.children.filter(c=>nodes[c]);
+  if(!kids.length) return own;
+  const kw=kids.reduce((s,c)=>s+sw(c),0)+HG*(kids.length-1);
+  return Math.max(own,kw);
+}
+function layout(){
+  const pos={};
+  const isSp=id=>Object.values(nodes).some(o=>o.spouseId===id);
+  const roots=Object.values(nodes).filter(n=>!n.parentId&&!isSp(n.id));
+  let sx=40;
+  function place(id,x,y){
+    if(!nodes[id]||pos[id]) return;
+    pos[id]={x,y};
+    const n=nodes[id];
+    if(n.spouseId&&nodes[n.spouseId]) pos[n.spouseId]={x:x+NW+HG/2,y};
+    if(collapsed.has(id)) return;
+    const kids=n.children.filter(c=>nodes[c]);
+    if(!kids.length) return;
+    const tw=kids.reduce((s,c)=>s+sw(c),0)+HG*(kids.length-1);
+    let cx=x+(sw(id)-tw)/2;
+    kids.forEach(k=>{place(k,cx,y+NH+VG);cx+=sw(k)+HG;});
+  }
+  roots.forEach(r=>{place(r.id,sx,40);sx+=sw(r.id)+HG*3;});
+  return pos;
+}
+
+// ============ RENDER ============
+const COL={
+  L:{fill:'#C8E6FA',stroke:'#378ADD',t:'#0C447C',s:'#185FA5'},
+  P:{fill:'#FADADD',stroke:'#D4537E',t:'#72243E',s:'#993556'},
+  S:{fill:'#E8F5E9',stroke:'#4CAF50',t:'#1B5E20',s:'#2E7D32'},
+};
+function el(tag,attrs){
+  const e=document.createElementNS('http://www.w3.org/2000/svg',tag);
+  Object.entries(attrs||{}).forEach(([k,v])=>e.setAttribute(k,v));
+  return e;
+}
+function render(){
+  const pos=layout();
+  const svg=document.getElementById('tree');
+  svg.innerHTML='';
+  let mx=200,my=200;
+  Object.values(pos).forEach(p=>{mx=Math.max(mx,p.x+NW+80);my=Math.max(my,p.y+NH+100);});
+  svg.setAttribute('width',Math.round(mx*zoom));
+  svg.setAttribute('height',Math.round(my*zoom));
+  svg.setAttribute('viewBox',`0 0 ${mx} ${my}`);
+  const isSp=id=>Object.values(nodes).some(o=>o.spouseId===id);
+
+  // Lines
+  const lg=el('g');
+  Object.values(nodes).forEach(n=>{
+    const p=pos[n.id]; if(!p) return;
+    if(n.spouseId&&pos[n.spouseId]&&n.id<n.spouseId){
+      const sp=pos[n.spouseId];
+      lg.appendChild(el('line',{x1:p.x+NW,y1:p.y+NH/2,x2:sp.x,y2:sp.y+NH/2,stroke:'#aaa','stroke-width':'1','stroke-dasharray':'4 3'}));
+    }
+    if(!collapsed.has(n.id)){
+      const kids=n.children.filter(c=>pos[c]);
+      if(!kids.length) return;
+      const hsSp=n.spouseId&&pos[n.spouseId];
+      const px2=hsSp?p.x+NW+HG/4+NW/2:p.x+NW/2;
+      const py2=p.y+NH, midY=py2+VG/2;
+      lg.appendChild(el('line',{x1:px2,y1:py2,x2:px2,y2:midY,stroke:'#bbb','stroke-width':'1'}));
+      if(kids.length>1){
+        const xs=kids.map(k=>pos[k].x+NW/2);
+        lg.appendChild(el('line',{x1:Math.min(...xs),y1:midY,x2:Math.max(...xs),y2:midY,stroke:'#bbb','stroke-width':'1'}));
+      }
+      kids.forEach(k=>{
+        const kp=pos[k];
+        lg.appendChild(el('line',{x1:kp.x+NW/2,y1:midY,x2:kp.x+NW/2,y2:kp.y,stroke:'#bbb','stroke-width':'1'}));
+      });
+    }
+  });
+  svg.appendChild(lg);
+
+  // Nodes
+  const ng2=el('g');
+  Object.values(nodes).forEach(n=>{
+    const p=pos[n.id]; if(!p) return;
+    const sp=isSp(n.id);
+    const col=sp?COL.S:(n.gender==='P'?COL.P:COL.L);
+    const hasKids=n.children.filter(c=>nodes[c]).length>0;
+    const g=el('g',{class:'ng',transform:`translate(${p.x},${p.y})`});
+    g.appendChild(el('rect',{width:NW,height:NH,rx:'7',fill:col.fill,stroke:col.stroke,'stroke-width':'0.5'}));
+    if(n.gencode){const gc=el('text',{x:'5',y:'9','dominant-baseline':'hanging','font-size':'8',fill:col.s,opacity:'0.7'});gc.textContent=n.gencode;g.appendChild(gc);}
+    const hasT=n.title&&n.title.trim();
+    const fullName=(hasT?n.title+' ':'')+n.name;
+    const disp=fullName.length>20?fullName.slice(0,19)+'…':fullName;
+    const ty=n.place?20:NH/2;
+    const t1=el('text',{x:NW/2,y:ty,'text-anchor':'middle','dominant-baseline':'central','font-size':'12','font-weight':'500',fill:col.t});
+    t1.textContent=disp; g.appendChild(t1);
+    if(n.place){const pl=n.place.length>20?n.place.slice(0,19)+'…':n.place;const pt=el('text',{x:NW/2,y:'38','text-anchor':'middle','dominant-baseline':'central','font-size':'9',fill:col.s,opacity:'0.75'});pt.textContent=pl;g.appendChild(pt);}
+    if(hasKids){const tog=el('text',{x:NW-6,y:'9','text-anchor':'end','dominant-baseline':'hanging','font-size':'10',fill:col.s});tog.textContent=collapsed.has(n.id)?'▶':'▼';tog.style.cursor='pointer';tog.addEventListener('click',e=>{e.stopPropagation();collapsed.has(n.id)?collapsed.delete(n.id):collapsed.add(n.id);render();});g.appendChild(tog);}
+    g.addEventListener('click',()=>openEdit(n.id));
+    ng2.appendChild(g);
+
+    const dep=(n.gencode.match(/\./g)||[]).length;
+    if(dep<10){
+      const ab=el('g',{class:'ab',transform:`translate(${p.x+NW/2-9},${p.y+NH+VG/2-9})`});
+      const ac=el('circle',{cx:'9',cy:'9',r:'9',fill:'#1D9E75',opacity:'0.8'});
+      const at=el('text',{x:'9',y:'9','text-anchor':'middle','dominant-baseline':'central','font-size':'14',fill:'#fff'});
+      at.textContent='+'; ab.appendChild(ac); ab.appendChild(at);
+      ab.addEventListener('click',e=>{e.stopPropagation();openAddChild(n.id);});
+      ng2.appendChild(ab);
+    }
+    if(!n.spouseId){
+      const sb=el('g',{class:'ab',transform:`translate(${p.x+NW+3},${p.y+NH/2-9})`});
+      const sc=el('circle',{cx:'9',cy:'9',r:'9',fill:'#7F77DD',opacity:'0.75'});
+      const st=el('text',{x:'9',y:'9','text-anchor':'middle','dominant-baseline':'central','font-size':'10',fill:'#fff'});
+      st.textContent='♥'; sb.appendChild(sc); sb.appendChild(st);
+      sb.addEventListener('click',e=>{e.stopPropagation();openAddSpouse(n.id);});
+      ng2.appendChild(sb);
+    }
+  });
+  svg.appendChild(ng2);
+  document.getElementById('node-count').textContent=Object.keys(nodes).length+' anggota';
+}
+
+// ============ MODAL ============
+function openModal(title,mode,pid,nid){
+  modalMode=mode; modalPid=pid; modalNid=nid;
+  document.getElementById('modal-title').textContent=title;
+  document.getElementById('btn-del').style.display=mode==='edit'?'':'none';
+  const n=nid&&nodes[nid];
+  document.getElementById('m-name').value=n?n.name:'';
+  document.getElementById('m-title').value=n?n.title:'';
+  document.getElementById('m-gender').value=n?n.gender:'L';
+  document.getElementById('m-gencode').value=n?n.gencode:'';
+  document.getElementById('m-place').value=n?n.place:'';
+  document.getElementById('m-note').value=n?n.note:'';
+  document.getElementById('modal-overlay').classList.add('open');
+  setTimeout(()=>document.getElementById('m-name').focus(),50);
+}
+function closeModal(){document.getElementById('modal-overlay').classList.remove('open');}
+function openAddRoot(){openModal('Tambah Leluhur','add-root',null,null);}
+function openAddChild(pid){openModal('Tambah Anak','add-child',pid,null);}
+function openAddSpouse(nid){openModal('Tambah Pasangan','add-spouse',null,nid);}
+function openEdit(nid){openModal('Edit Anggota','edit',null,nid);}
+
+function saveModal(){
+  const name=document.getElementById('m-name').value.trim();
+  if(!name){document.getElementById('m-name').style.borderColor='red';return;}
+  document.getElementById('m-name').style.borderColor='';
+  const title=document.getElementById('m-title').value.trim();
+  const gender=document.getElementById('m-gender').value;
+  const gencode=document.getElementById('m-gencode').value.trim();
+  const place=document.getElementById('m-place').value.trim();
+  const note=document.getElementById('m-note').value.trim();
+  if(modalMode==='add-root') mk(name,title,gender,gencode,place,note,null);
+  else if(modalMode==='add-child') addChild(modalPid,name,title,gender,gencode,place,note);
+  else if(modalMode==='add-spouse') addSpouse(modalNid,name,title,gender,gencode,place,note);
+  else if(modalMode==='edit'){const n=nodes[modalNid];n.name=name;n.title=title;n.gender=gender;n.gencode=gencode;n.place=place;n.note=note;}
+  closeModal(); render(); saveLocal();
+  if(ghConfig.token) saveToGitHub();
+}
+
+function deleteNode(){
+  if(!confirm('Hapus anggota ini dan seluruh keturunannya?')) return;
+  const n=nodes[modalNid];
+  if(n.parentId&&nodes[n.parentId]) nodes[n.parentId].children=nodes[n.parentId].children.filter(c=>c!==n.id);
+  if(n.spouseId&&nodes[n.spouseId]){nodes[n.spouseId].spouseId=null;const sp=nodes[n.spouseId];if(!sp.parentId&&!sp.children.length) delete nodes[n.spouseId];}
+  function del(id){if(!nodes[id]) return;nodes[id].children.forEach(del);if(nodes[id].spouseId&&nodes[nodes[id].spouseId]) nodes[nodes[id].spouseId].spouseId=null;delete nodes[id];}
+  n.children.forEach(del); delete nodes[modalNid];
+  closeModal(); render(); saveLocal();
+  if(ghConfig.token) saveToGitHub();
+}
+
+// ============ CONTROLS ============
+function setZoom(v){zoom=parseFloat(v);render();}
+function expandAll(){collapsed.clear();render();}
+function collapseAll(){Object.keys(nodes).forEach(id=>{if(nodes[id]&&nodes[id].children.length) collapsed.add(id);});render();}
+
+function exportHTML(){
+  const ds=`<script>var PRELOAD={nodes:${JSON.stringify(nodes)},idCounter:${idCounter},ghConfig:${JSON.stringify(ghConfig)}};<\/script>`;
+  let html=document.documentElement.outerHTML;
+  html=html.replace('</head>',ds+'</head>');
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([html],{type:'text/html'}));
+  a.download='silsilah-kasanmunadi-'+new Date().toISOString().slice(0,10)+'.html';
+  a.click();
+  toast('HTML didownload','ok');
+}
+
+// ============ KEYBOARD ============
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape') closeModal();
+  if(e.key==='Enter'&&document.getElementById('modal-overlay').classList.contains('open')){
+    if(e.target.tagName!=='TEXTAREA'){e.preventDefault();saveModal();}
+  }
+});
+document.getElementById('modal-overlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
+
+// ============ INIT ============
+if(typeof PRELOAD!=='undefined'){
+  nodes=PRELOAD.nodes; idCounter=PRELOAD.idCounter;
+  if(PRELOAD.ghConfig) ghConfig=PRELOAD.ghConfig;
+  collapsed=new Set();
+} else if(!loadLocal()){
+  seedData();
+}
+
+if(ghConfig.token){
+  setStatus('spin','Menghubungkan ke GitHub...');
+  loadFromGitHub();
+} else {
+  setStatus('','Belum terhubung — klik ⚙️ Pengaturan');
+}
+render();
+</script>
+</body>
+</html>
