@@ -2,151 +2,123 @@
   "nodes": {
     "n1": {
       "id": "n1",
-      "name": "Kasanmunadi",
+      "name": "Ngali",
       "title": "R.",
       "gender": "L",
       "gencode": "G.1",
-      "place": "Abdi Dalem Jajar Suronata, Yogyakarta ÃÂ· Makam Kuncen",
+      "place": "Makam di Secang, Magelang",
       "note": "",
       "children": [
-        "n2"
+        "n2",
+        "n3",
+        "n4",
+        "n5",
+        "n6",
+        "n7"
       ],
       "spouseId": null,
       "parentId": null
     },
     "n2": {
       "id": "n2",
-      "name": "Supingah al. Pawiroditoto",
-      "title": "R. Ngt.",
-      "gender": "P",
-      "gencode": "G.1.2",
-      "place": "",
-      "note": "",
-      "children": [
-        "n7"
-      ],
-      "spouseId": null,
-      "parentId": "n1"
-    },
-    "n7": {
-      "id": "n7",
-      "name": "Ngali",
-      "title": "R.",
-      "gender": "L",
-      "gencode": "G.1.2.1",
-      "place": "Makam di Secang Magelang",
-      "note": "",
-      "children": [
-        "n8",
-        "n9",
-        "n10",
-        "n11",
-        "n12",
-        "n13"
-      ],
-      "spouseId": null,
-      "parentId": "n2"
-    },
-    "n8": {
-      "id": "n8",
       "name": "Mohammad Jupri",
       "title": "R.",
       "gender": "L",
-      "gencode": "G.1.2.1.1",
+      "gencode": "G.1.1",
       "place": "Riau",
       "note": "",
       "children": [],
       "spouseId": null,
-      "parentId": "n7"
+      "parentId": "n1"
     },
-    "n9": {
-      "id": "n9",
+    "n3": {
+      "id": "n3",
       "name": "Sri Daryati",
       "title": "Rr.",
       "gender": "P",
-      "gencode": "G.1.2.1.2",
+      "gencode": "G.1.2",
       "place": "Secang",
+      "note": "",
+      "children": [
+        "n11",
+        "n12",
+        "n13",
+        "n14",
+        "n15",
+        "n16"
+      ],
+      "spouseId": "n8",
+      "parentId": "n1"
+    },
+    "n4": {
+      "id": "n4",
+      "name": "Waladunajib",
+      "title": "R.",
+      "gender": "L",
+      "gencode": "G.1.3",
+      "place": "Semarang",
       "note": "",
       "children": [
         "n17",
         "n18",
         "n19",
-        "n20",
-        "n21",
-        "n22"
-      ],
-      "spouseId": "n14",
-      "parentId": "n7"
-    },
-    "n10": {
-      "id": "n10",
-      "name": "Waladunajib",
-      "title": "R.",
-      "gender": "L",
-      "gencode": "G.1.2.1.3",
-      "place": "Semarang",
-      "note": "",
-      "children": [
-        "n23",
-        "n24",
-        "n25",
-        "n26"
+        "n20"
       ],
       "spouseId": null,
-      "parentId": "n7"
+      "parentId": "n1"
     },
-    "n11": {
-      "id": "n11",
+    "n5": {
+      "id": "n5",
       "name": "Asfarudin",
       "title": "R.",
       "gender": "L",
-      "gencode": "G.1.2.1.4",
+      "gencode": "G.1.4",
       "place": "Makam di Semarang",
       "note": "",
       "children": [
-        "n27",
-        "n28",
-        "n29",
-        "n30"
+        "n21",
+        "n22",
+        "n23",
+        "n24"
       ],
       "spouseId": null,
-      "parentId": "n7"
+      "parentId": "n1"
     },
-    "n12": {
-      "id": "n12",
+    "n6": {
+      "id": "n6",
       "name": "Sri Bariah",
       "title": "Rr.",
       "gender": "P",
-      "gencode": "G.1.2.1.5",
+      "gencode": "G.1.5",
       "place": "Gombong",
       "note": "",
       "children": [
-        "n31",
-        "n32",
-        "n33",
-        "n34"
+        "n25",
+        "n26",
+        "n27",
+        "n28"
       ],
-      "spouseId": "n15",
-      "parentId": "n7"
+      "spouseId": "n9",
+      "parentId": "n1"
     },
-    "n13": {
-      "id": "n13",
+    "n7": {
+      "id": "n7",
       "name": "Puguh Sutopo",
       "title": "R.",
       "gender": "L",
-      "gencode": "G.1.2.1.6",
+      "gencode": "G.1.6",
       "place": "Tempel (istri ke-2)",
       "note": "",
       "children": [
-        "n35",
-        "n36",
-        "n37"
+        "n29",
+        "n30",
+        "n31"
       ],
-      "spouseId": "n16",
-      "parentId": "n7"
+      "spouseId": "n10",
+      "parentId": "n1"
     },
-    "n14": {
-      "id": "n14",
+    "n8": {
+      "id": "n8",
       "name": "Sukandar Budiharjo",
       "title": "",
       "gender": "L",
@@ -154,11 +126,11 @@
       "place": "",
       "note": "",
       "children": [],
-      "spouseId": "n9",
-      "parentId": "n7"
+      "spouseId": "n3",
+      "parentId": null
     },
-    "n15": {
-      "id": "n15",
+    "n9": {
+      "id": "n9",
       "name": "Kusno",
       "title": "",
       "gender": "L",
@@ -166,11 +138,11 @@
       "place": "",
       "note": "",
       "children": [],
-      "spouseId": "n12",
-      "parentId": "n7"
+      "spouseId": "n6",
+      "parentId": null
     },
-    "n16": {
-      "id": "n16",
+    "n10": {
+      "id": "n10",
       "name": "Tini Sutini",
       "title": "",
       "gender": "P",
@@ -178,269 +150,269 @@
       "place": "",
       "note": "",
       "children": [],
-      "spouseId": "n13",
-      "parentId": "n7"
+      "spouseId": "n7",
+      "parentId": null
     },
-    "n17": {
-      "id": "n17",
+    "n11": {
+      "id": "n11",
       "name": "Alwi Prihatin",
       "title": "R.",
       "gender": "L",
-      "gencode": "G.1.2.1.2.1",
+      "gencode": "G.1.2.1",
       "place": "",
       "note": "",
       "children": [],
       "spouseId": null,
-      "parentId": "n9"
+      "parentId": "n3"
     },
-    "n18": {
-      "id": "n18",
+    "n12": {
+      "id": "n12",
       "name": "Sri Suyatmiati",
       "title": "Rr.",
       "gender": "P",
-      "gencode": "G.1.2.1.2.2",
+      "gencode": "G.1.2.2",
       "place": "",
       "note": "",
       "children": [],
       "spouseId": null,
-      "parentId": "n9"
+      "parentId": "n3"
     },
-    "n19": {
-      "id": "n19",
+    "n13": {
+      "id": "n13",
       "name": "Adi Sofyan",
       "title": "R.",
       "gender": "L",
-      "gencode": "G.1.2.1.2.3",
+      "gencode": "G.1.2.3",
       "place": "",
       "note": "",
       "children": [],
       "spouseId": null,
-      "parentId": "n9"
+      "parentId": "n3"
     },
-    "n20": {
-      "id": "n20",
+    "n14": {
+      "id": "n14",
       "name": "Sri Subekti",
       "title": "Rr.",
       "gender": "P",
-      "gencode": "G.1.2.1.2.4",
+      "gencode": "G.1.2.4",
       "place": "",
       "note": "",
       "children": [],
       "spouseId": null,
-      "parentId": "n9"
+      "parentId": "n3"
     },
-    "n21": {
-      "id": "n21",
+    "n15": {
+      "id": "n15",
       "name": "Joko Panulung",
       "title": "R.",
       "gender": "L",
-      "gencode": "G.1.2.1.2.5",
+      "gencode": "G.1.2.5",
       "place": "",
       "note": "",
       "children": [],
       "spouseId": null,
-      "parentId": "n9"
+      "parentId": "n3"
     },
-    "n22": {
-      "id": "n22",
+    "n16": {
+      "id": "n16",
       "name": "Sri Wahyuti Pamungkas",
       "title": "Rr.",
       "gender": "P",
-      "gencode": "G.1.2.1.2.6",
+      "gencode": "G.1.2.6",
       "place": "",
       "note": "",
       "children": [],
       "spouseId": null,
-      "parentId": "n9"
+      "parentId": "n3"
     },
-    "n23": {
-      "id": "n23",
+    "n17": {
+      "id": "n17",
       "name": "Agus",
       "title": "R.",
       "gender": "L",
-      "gencode": "G.1.2.1.3.1",
+      "gencode": "G.1.3.1",
       "place": "",
       "note": "",
       "children": [],
       "spouseId": null,
-      "parentId": "n10"
+      "parentId": "n4"
     },
-    "n24": {
-      "id": "n24",
+    "n18": {
+      "id": "n18",
       "name": "(belum tercatat)",
       "title": "",
       "gender": "L",
-      "gencode": "G.1.2.1.3.2",
+      "gencode": "G.1.3.2",
       "place": "",
       "note": "",
       "children": [],
       "spouseId": null,
-      "parentId": "n10"
+      "parentId": "n4"
     },
-    "n25": {
-      "id": "n25",
+    "n19": {
+      "id": "n19",
       "name": "Wawan",
       "title": "R.",
       "gender": "L",
-      "gencode": "G.1.2.1.3.3",
+      "gencode": "G.1.3.3",
       "place": "",
       "note": "",
       "children": [],
       "spouseId": null,
-      "parentId": "n10"
+      "parentId": "n4"
+    },
+    "n20": {
+      "id": "n20",
+      "name": "(belum tercatat)",
+      "title": "",
+      "gender": "L",
+      "gencode": "G.1.3.4",
+      "place": "",
+      "note": "",
+      "children": [],
+      "spouseId": null,
+      "parentId": "n4"
+    },
+    "n21": {
+      "id": "n21",
+      "name": "Unggul Pujianto",
+      "title": "R.",
+      "gender": "L",
+      "gencode": "G.1.4.1",
+      "place": "",
+      "note": "",
+      "children": [],
+      "spouseId": null,
+      "parentId": "n5"
+    },
+    "n22": {
+      "id": "n22",
+      "name": "Dwi Romadhoni Raharjo",
+      "title": "R.",
+      "gender": "L",
+      "gencode": "G.1.4.2",
+      "place": "",
+      "note": "",
+      "children": [],
+      "spouseId": null,
+      "parentId": "n5"
+    },
+    "n23": {
+      "id": "n23",
+      "name": "Hepi Triono",
+      "title": "R.",
+      "gender": "L",
+      "gencode": "G.1.4.3",
+      "place": "",
+      "note": "",
+      "children": [],
+      "spouseId": null,
+      "parentId": "n5"
+    },
+    "n24": {
+      "id": "n24",
+      "name": "Catur Riani Fitri Astuti",
+      "title": "Rr.",
+      "gender": "P",
+      "gencode": "G.1.4.4",
+      "place": "",
+      "note": "",
+      "children": [],
+      "spouseId": null,
+      "parentId": "n5"
+    },
+    "n25": {
+      "id": "n25",
+      "name": "Budi Mulyono",
+      "title": "R.",
+      "gender": "L",
+      "gencode": "G.1.5.1",
+      "place": "",
+      "note": "",
+      "children": [],
+      "spouseId": null,
+      "parentId": "n6"
     },
     "n26": {
       "id": "n26",
       "name": "(belum tercatat)",
       "title": "",
       "gender": "L",
-      "gencode": "G.1.2.1.3.4",
+      "gencode": "G.1.5.2",
       "place": "",
       "note": "",
       "children": [],
       "spouseId": null,
-      "parentId": "n10"
+      "parentId": "n6"
     },
     "n27": {
       "id": "n27",
-      "name": "Unggul Pujianto",
-      "title": "R.",
+      "name": "(belum tercatat)",
+      "title": "",
       "gender": "L",
-      "gencode": "G.1.2.1.4.1",
+      "gencode": "G.1.5.3",
       "place": "",
       "note": "",
       "children": [],
       "spouseId": null,
-      "parentId": "n11"
+      "parentId": "n6"
     },
     "n28": {
       "id": "n28",
-      "name": "Dwi Romadhoni Raharjo",
-      "title": "R.",
+      "name": "(belum tercatat)",
+      "title": "",
       "gender": "L",
-      "gencode": "G.1.2.1.4.2",
+      "gencode": "G.1.5.4",
       "place": "",
       "note": "",
       "children": [],
       "spouseId": null,
-      "parentId": "n11"
+      "parentId": "n6"
     },
     "n29": {
       "id": "n29",
-      "name": "Hepi Triono",
-      "title": "R.",
-      "gender": "L",
-      "gencode": "G.1.2.1.4.3",
-      "place": "",
-      "note": "",
-      "children": [],
-      "spouseId": null,
-      "parentId": "n11"
-    },
-    "n30": {
-      "id": "n30",
-      "name": "Catur Riani Fitri Astuti",
-      "title": "Rr.",
-      "gender": "P",
-      "gencode": "G.1.2.1.4.4",
-      "place": "",
-      "note": "",
-      "children": [],
-      "spouseId": null,
-      "parentId": "n11"
-    },
-    "n31": {
-      "id": "n31",
-      "name": "Budi Mulyono",
-      "title": "R.",
-      "gender": "L",
-      "gencode": "G.1.2.1.5.1",
-      "place": "",
-      "note": "",
-      "children": [],
-      "spouseId": null,
-      "parentId": "n12"
-    },
-    "n32": {
-      "id": "n32",
-      "name": "(belum tercatat)",
-      "title": "",
-      "gender": "L",
-      "gencode": "G.1.2.1.5.2",
-      "place": "",
-      "note": "",
-      "children": [],
-      "spouseId": null,
-      "parentId": "n12"
-    },
-    "n33": {
-      "id": "n33",
-      "name": "(belum tercatat)",
-      "title": "",
-      "gender": "L",
-      "gencode": "G.1.2.1.5.3",
-      "place": "",
-      "note": "",
-      "children": [],
-      "spouseId": null,
-      "parentId": "n12"
-    },
-    "n34": {
-      "id": "n34",
-      "name": "(belum tercatat)",
-      "title": "",
-      "gender": "L",
-      "gencode": "G.1.2.1.5.4",
-      "place": "",
-      "note": "",
-      "children": [],
-      "spouseId": null,
-      "parentId": "n12"
-    },
-    "n35": {
-      "id": "n35",
       "name": "Akhmad Fajar Riyadini",
       "title": "R.",
       "gender": "L",
-      "gencode": "G.1.2.1.6.1",
+      "gencode": "G.1.6.1",
       "place": "",
       "note": "",
       "children": [
-        "n41"
+        "n35"
       ],
-      "spouseId": "n38",
-      "parentId": "n13"
+      "spouseId": "n32",
+      "parentId": "n7"
     },
-    "n36": {
-      "id": "n36",
+    "n30": {
+      "id": "n30",
       "name": "Yusuf Nurseto Aji",
       "title": "R.",
       "gender": "L",
-      "gencode": "G.1.2.1.6.2",
+      "gencode": "G.1.6.2",
       "place": "",
       "note": "",
       "children": [
-        "n42"
+        "n36"
       ],
-      "spouseId": "n39",
-      "parentId": "n13"
+      "spouseId": "n33",
+      "parentId": "n7"
     },
-    "n37": {
-      "id": "n37",
+    "n31": {
+      "id": "n31",
       "name": "Aisyah Amani Tri Ostika Wati",
       "title": "Rr.",
       "gender": "P",
-      "gencode": "G.1.2.1.6.3",
+      "gencode": "G.1.6.3",
       "place": "",
       "note": "",
       "children": [
-        "n43"
+        "n37"
       ],
-      "spouseId": "n40",
-      "parentId": "n13"
+      "spouseId": "n34",
+      "parentId": "n7"
     },
-    "n38": {
-      "id": "n38",
+    "n32": {
+      "id": "n32",
       "name": "Dwi Ratmisari",
       "title": "",
       "gender": "P",
@@ -448,11 +420,11 @@
       "place": "",
       "note": "",
       "children": [],
-      "spouseId": "n35",
-      "parentId": "n13"
+      "spouseId": "n29",
+      "parentId": null
     },
-    "n39": {
-      "id": "n39",
+    "n33": {
+      "id": "n33",
       "name": "Vera Dwi Anggraeni",
       "title": "",
       "gender": "P",
@@ -460,11 +432,11 @@
       "place": "",
       "note": "",
       "children": [],
-      "spouseId": "n36",
-      "parentId": "n13"
+      "spouseId": "n30",
+      "parentId": null
     },
-    "n40": {
-      "id": "n40",
+    "n34": {
+      "id": "n34",
       "name": "Purwanto",
       "title": "",
       "gender": "L",
@@ -472,45 +444,45 @@
       "place": "",
       "note": "",
       "children": [],
-      "spouseId": "n37",
-      "parentId": "n13"
+      "spouseId": "n31",
+      "parentId": null
     },
-    "n41": {
-      "id": "n41",
+    "n35": {
+      "id": "n35",
       "name": "Xavier Attarazka Akhmad",
       "title": "R.",
       "gender": "L",
-      "gencode": "G.1.2.1.6.1.1",
+      "gencode": "G.1.6.1.1",
       "place": "",
       "note": "",
       "children": [],
       "spouseId": null,
-      "parentId": "n35"
+      "parentId": "n29"
     },
-    "n42": {
-      "id": "n42",
+    "n36": {
+      "id": "n36",
       "name": "Aksara Nawasena Yusuf",
       "title": "R.",
       "gender": "L",
-      "gencode": "G.1.2.1.6.2.1",
+      "gencode": "G.1.6.2.1",
       "place": "",
       "note": "",
       "children": [],
       "spouseId": null,
-      "parentId": "n36"
+      "parentId": "n30"
     },
-    "n43": {
-      "id": "n43",
+    "n37": {
+      "id": "n37",
       "name": "Muhammad Haidar Alfarizi Purwanto",
       "title": "R.",
       "gender": "L",
-      "gencode": "G.1.2.1.6.3.1",
+      "gencode": "G.1.6.3.1",
       "place": "",
       "note": "",
       "children": [],
       "spouseId": null,
-      "parentId": "n37"
+      "parentId": "n31"
     }
   },
-  "idCounter": 44
+  "idCounter": 38
 }
