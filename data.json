@@ -198,7 +198,7 @@
       "place": "",
       "note": "",
       "children": [],
-      "spouseId": null,
+      "spouseId": "n38",
       "parentId": "n3"
     },
     "n15": {
@@ -482,7 +482,19 @@
       "children": [],
       "spouseId": null,
       "parentId": "n31"
+    },
+    "n38": {
+      "id": "n38",
+      "name": "Suparno",
+      "title": "",
+      "gender": "L",
+      "gencode": "G.1.2.4",
+      "place": "",
+      "note": "",
+      "children": [],
+      "spouseId": "n14",
+      "parentId": "n3"
     }
   },
-  "idCounter": 38
+  "idCounter": 39
 }
