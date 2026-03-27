@@ -509,7 +509,9 @@
       "gencode": "G.1.2.4.1",
       "place": "",
       "note": "",
-      "children": [],
+      "children": [
+        "n45"
+      ],
       "spouseId": "n40",
       "parentId": "n14"
     },
@@ -560,7 +562,19 @@
       "children": [],
       "spouseId": null,
       "parentId": "n14"
+    },
+    "n45": {
+      "id": "n45",
+      "name": "Wildan Revano Gasendra",
+      "title": "R.r",
+      "gender": "L",
+      "gencode": "G.1.2.4.1.1",
+      "place": "",
+      "note": "",
+      "children": [],
+      "spouseId": null,
+      "parentId": "n39"
     }
   },
-  "idCounter": 45
+  "idCounter": 46
 }
