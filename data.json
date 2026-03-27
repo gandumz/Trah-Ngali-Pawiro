@@ -9,8 +9,7 @@
       "place": "Abdi Dalem Jajar Suronata, Yogyakarta Â· Makam Kuncen",
       "note": "",
       "children": [
-        "n2",
-        "n6"
+        "n2"
       ],
       "spouseId": null,
       "parentId": null
@@ -26,18 +25,6 @@
       "children": [
         "n7"
       ],
-      "spouseId": null,
-      "parentId": "n1"
-    },
-    "n6": {
-      "id": "n6",
-      "name": "Ngaidah al. Harjopranoto",
-      "title": "R. Ngt.",
-      "gender": "P",
-      "gencode": "G.1.5",
-      "place": "",
-      "note": "",
-      "children": [],
       "spouseId": null,
       "parentId": "n1"
     },
